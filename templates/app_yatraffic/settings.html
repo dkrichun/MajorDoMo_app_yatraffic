@@ -1,0 +1,46 @@
+<div class="panel panel-info">
+<div class="panel-heading">Регион <strong>[#city_title#]</strong>&nbsp;&nbsp;</div>
+<div class="panel-body">
+
+<form action="?" method="get" class="form-horizontal" name="save_setting">
+<div class="form-group">
+	<label class="col-md-3">Номер региона</label>
+	<div class="col-md-4">
+	<input type="text" name="reg_id" class="form-control" placeholder="№" value="[#reg_id#]">
+	</div>
+	<a href="https://yandex.ru/yaca/geo.c2n" class="btn btn-default">Список регионов</a>
+</div>
+<div class="form-group">
+	<label class="col-md-3">Надпись</label>
+	<div class="col-md-4">
+	<input type="text" name="c_val" class="form-control" placeholder="Например [пробки]" value="[#c_val#]">
+	</div>
+	*Вставляется на информер вместо города
+</div>
+<div class="form-group">
+	<label class="col-md-3">Частота обновления</label>
+	<div class="col-md-2">
+	<select class="form-control" name="update_interval">
+		<option value="0"[#if updateTime=="0"#] selected[#endif#]>----</option>
+		<option value="1"[#if updateTime=="1"#] selected[#endif#]>час</option>
+		<option value="2"[#if updateTime=="2"#] selected[#endif#]>2 часа</option>
+		<option value="3"[#if updateTime=="3"#] selected[#endif#]>3 часа</option>
+		<option value="4"[#if updateTime=="4"#] selected[#endif#]>4 часа</option>
+		<option value="5"[#if updateTime=="5"#] selected[#endif#]>5 часов</option>
+	</select> 
+	</div>
+	*not working yet
+</div>
+
+<div class="form-group">
+	<label class="col-md-3">После обновления выполнить сценарий</label>
+	<div class="col-md-4">
+	<input type="text" name="script" class="form-control" placeholder="Имя сценария" value="[#script#]">
+	</div>
+</div>
+<button type="submit" name="subm" value="settings" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<a href="?" class="btn btn-default"><#LANG_CANCEL#></a>
+</form>
+
+</div>
+</div>

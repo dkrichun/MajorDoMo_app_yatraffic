@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+
+.yt_all {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	display: inline-block;
+	height: 105px;
+	width: 230px;
+	font: 15px Arial, Helvetica, sans-serif;
+}
+.info {
+	/*vertical-align: top;*/
+	float: left;
+	height: 84px;
+	width: 86px;
+}
+.yt_level {
+	font-size: 28px;
+}
+.yt_title {
+	font-size: 18px;
+}
+.yt_val {
+	font-size: 3;	
+}

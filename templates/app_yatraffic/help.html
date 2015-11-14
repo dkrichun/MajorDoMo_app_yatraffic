@@ -1,0 +1,15 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Вызов модуля в меню</div>
+	<div class="panel-body">
+		<p><code><b>&#091#module name="app_yatraffic"#&#093</b></code> - вывод сведений о пробках<br>
+	</div>
+</div>
+<div class="panel panel-info">
+	<div class="panel-heading">Вызов модуля в своих скриптах/методах</div>
+	<div class="panel-body">
+		<p>Для "ручного" обновления данных, в своих скриптах/методах можно использовать:<br>
+		<code style="display:block">include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
+		$yatraffic=new app_yatreffic();<br>
+		$yatraffic->get_traffic(gg('yt_setting.reg_id'));</code></p>
+	</div>
+</div>

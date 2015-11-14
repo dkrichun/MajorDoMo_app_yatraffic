@@ -1,0 +1,47 @@
+
+<big>Пробки от Яндекс</big>
+<div class="float-right">
+	<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#about">О модуле&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign icon-white"></span>
+	</button>
+</div>
+
+<ul class="nav nav-tabs">
+ <li [#if VIEW_MODE==""#]class="active"[#endif#]><a href="?view_mode=">Просмотр</a></li>
+ <li [#if VIEW_MODE=="settings"#]class="active"[#endif#]><a href="?view_mode=settings">Настройки</a></li>
+ <li [#if VIEW_MODE=="help"#]class="active"[#endif#]><a href="?view_mode=help">Помощь</a></li>
+</ul><br>
+[#if VIEW_MODE=""#]
+	[#inc preview.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="settings"#]
+	[#inc settings.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="help"#]
+	[#inc help.html#]
+[#endif VIEW_MODE#]
+
+
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="about1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
+				<h4 class="modal-title">Яндекс пробки</h4>
+			</div>
+			<div class="modal-body">
+				<p> Модуль получения пробок от Яндекса.<br>
+				Обсуждение модуля <a href="http://smartliving.ru/forum/" target="_blank">здесь</a>.<br>
+				<hr size="1">
+				</p>
+				<p class="float-left"></p>
+			</div>
+			
+			<div class="modal-footer">
+				<div class="pull-left">@nick7zmail</div>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+			</div>
+		</div>
+	</div>
+</div>
