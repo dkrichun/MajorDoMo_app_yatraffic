@@ -11,6 +11,20 @@
 		<code style="display:block">include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
 		$yatraffic=new app_yatraffic();<br>
 		$yatraffic->get_traffic(gg('yt_setting.reg_id'));</code><br>
-		Так же этот код нужно использовать для автоматического обновления пробок в методе OnNewHour.</p>
+		Для автоматического обновления нужно вставить в метод OnNewHour (или любой другой, выполняемый ежечасно) следующий код:<br>
+		<code style="display:block">
+		$updateTime = gg('yt_settings.updateTime');<br>
+		if($updateTime > 0){<br>
+		$count = gg('yt_settings.countTime');<br>
+		if($count >= $updateTime){<br>
+        include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
+        $yatraffic=new app_yatraffic();<br>
+        $yatraffic->get_traffic(gg('yt_settings.city_id'));<br>
+        sg('yt_settings.countTime',1);<br>
+		} else {<br>
+        $count++;<br>
+        sg('yt_settings.countTime',$count);<br>
+		}<br>
+		}</code></p>
 	</div>
 </div>

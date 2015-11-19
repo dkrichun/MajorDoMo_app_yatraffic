@@ -195,6 +195,7 @@ function save_settings()
 	if(isset($c_val)) sg('yt_settings.c_val',$c_val);
 	if(isset($script)) sg('yt_settings.updScript',$script);
 	sg('yt_settings.updateTime',$update_interval);
+	sg('yt_settings.countTime',1);
 }
 
 /**
