@@ -10,7 +10,7 @@
 		<p>Для "ручного" обновления данных, в своих скриптах/методах можно использовать:<br>
 		<code style="display:block">include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
 		$yatraffic=new app_yatraffic();<br>
-		$yatraffic->get_traffic(gg('yt_setting.reg_id'));</code><br>
+		$yatraffic->get_traffic(gg('yt_settings.reg_id'));</code><br>
 		Для автоматического обновления нужно вставить в метод OnNewHour (или любой другой, выполняемый ежечасно) следующий код:<br>
 		<code style="display:block">
 		$updateTime = gg('yt_settings.updateTime');<br>
