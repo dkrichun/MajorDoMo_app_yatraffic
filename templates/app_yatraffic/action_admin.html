@@ -8,6 +8,7 @@
 <ul class="nav nav-tabs">
  <li [#if VIEW_MODE==""#]class="active"[#endif#]><a href="?view_mode=">Просмотр</a></li>
  <li [#if VIEW_MODE=="settings"#]class="active"[#endif#]><a href="?view_mode=settings">Настройки</a></li>
+ <li [#if VIEW_MODE=="routes_settings"#]class="active"[#endif#]><a href="?view_mode=routes_settings">Маршруты</a></li>
  <li [#if VIEW_MODE=="help"#]class="active"[#endif#]><a href="?view_mode=help">Помощь</a></li>
 </ul><br>
 [#if VIEW_MODE=""#]
@@ -16,6 +17,10 @@
 
 [#if VIEW_MODE="settings"#]
 	[#inc settings.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="routes_settings"#]
+	[#inc routes_settings.html#]
 [#endif VIEW_MODE#]
 
 [#if VIEW_MODE="help"#]

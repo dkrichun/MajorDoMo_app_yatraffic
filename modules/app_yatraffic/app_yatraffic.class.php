@@ -1,4 +1,4 @@
-<?
+<?php
 /**
 * Пробки от Яндекс
 *
@@ -117,19 +117,21 @@ function admin(&$out) {
 	global $subm;
 	if($subm == 'getTraffic'){
 		$this->get_traffic(gg('yt_settings.reg_id'));
-	}
-	else if($subm == 'settings'){
+	} else if($subm == 'settings'){
 		$this->save_settings();
 		$this->get_settings($out);
-		$this->get_traffic(gg('yt_settings.reg_id'));
+	} else if($subm == 'routes'){
+		$this->save_routes();
+		$this->get_routes($out);
 	}
 	
-	if($this->view_mode == ''){
+	if ($this->view_mode == '') {
 		$this->get_settings($out);
 		$this->view_traffic($out);
-	}	
-	else if($this->view_mode == 'settings'){
+	} else if($this->view_mode == 'settings') {
 		$this->get_settings($out);
+	} else if($this->view_mode == 'routes_settings') {
+		$this->get_routes($out);
 	}
 		
 }
@@ -146,6 +148,8 @@ function usual(&$out) {
 }
 
 function view_traffic(&$out) {
+$routes = $this->routes;
+if($routes!="1") {
 $url_ico='/templates/app_yatraffic/icons/';
 		if (!gg('yt_settings.c_val') == '') {
 		$out["TRAFFIC"]["city_title"] = gg('yt_settings.c_val');
@@ -160,6 +164,17 @@ $url_ico='/templates/app_yatraffic/icons/';
 		$out["TRAFFIC"]["val"] = gg('yt_info.val');
 		$out["TRAFFIC"]["tend"] = gg('yt_info.tend');
 		$out["TRAFFIC"]["trafficIco"] = $url_ico.gg('yt_info.icon').'.png';
+		} else {
+		$out["ROUTES"]["route1"] = gg('yt_settings.route1');
+		$out["ROUTES"]["route1_name"] = gg('yt_settings.route1_name');
+		$out["ROUTES"]["route2"] = gg('yt_settings.route2');
+		$out["ROUTES"]["route2_name"] = gg('yt_settings.route2_name');
+		$out["ROUTES"]["route3"] = gg('yt_settings.route3');
+		$out["ROUTES"]["route3_name"] = gg('yt_settings.route3_name');
+		$out["ROUTES"]["route4"] = gg('yt_settings.route4');
+		$out["ROUTES"]["route4_name"] = gg('yt_settings.route4_name');
+		$out["ROUTES"]["height"] = gg('yt_settings.height');
+		}
 }
 
 function get_traffic($reg_id) {
@@ -173,6 +188,18 @@ sg('yt_info.time', $xml->traffic->time);
 sg('yt_info.val', $xml->traffic->hint);
 sg('yt_info.tend', $xml->traffic->tend);
 runScript(gg('yt_settings.updScript'));
+}
+function get_routes(&$out)
+{
+	$out["route1"] = gg('yt_settings.route1');
+	$out["route1_name"] = gg('yt_settings.route1_name');
+	$out["route2"] = gg('yt_settings.route2');
+	$out["route2_name"] = gg('yt_settings.route2_name');
+	$out["route3"] = gg('yt_settings.route3');
+	$out["route3_name"] = gg('yt_settings.route3_name');
+	$out["route4"] = gg('yt_settings.route4');
+	$out["route4_name"] = gg('yt_settings.route4_name');
+	$out["height"] = gg('yt_settings.height');
 }
 
 function get_settings(&$out)
@@ -196,6 +223,27 @@ function save_settings()
 	if(isset($script)) sg('yt_settings.updScript',$script);
 	sg('yt_settings.updateTime',$update_interval);
 	sg('yt_settings.countTime',1);
+}
+function save_routes()
+{
+global $route1_name;
+global $route1;
+global $route2_name;
+global $route2;
+global $route3_name;
+global $route3;
+global $route4_name;
+global $route4;
+global $height;
+sg('yt_settings.route1_name',$route1_name);
+if($route1!='') sg('yt_settings.route1',$route1); else sg('yt_settings.route1', 'null');
+sg('yt_settings.route2_name',$route2_name);
+if($route2!='') sg('yt_settings.route2',$route2); else sg('yt_settings.route2', 'null');
+sg('yt_settings.route3_name',$route3_name); 
+if($route3!='') sg('yt_settings.route3',$route3); else sg('yt_settings.route3', 'null');
+sg('yt_settings.route4_name',$route4_name);
+if($route4!='') sg('yt_settings.route4',$route4); else sg('yt_settings.route4', 'null');
+sg('yt_settings.height',$height);
 }
 
 /**
@@ -227,6 +275,23 @@ function save_settings()
 			$obj_rec['ID'] = SQLInsert('objects', $obj_rec);
 		}
 	}
+addClassMethod('ya_traffic', 'auto_update', '$updateTime = gg("yt_settings.updateTime");
+if($updateTime > 0){
+	$count = gg("yt_settings.countTime");
+	if($count >= $updateTime){
+		include_once(DIR_MODULES."app_yatraffic/app_yatraffic.class.php");
+		$app_yatraffic=new app_yatraffic();
+		$app_yatraffic->get_traffic(gg("yt_settings.reg_id"));
+		sg("yt_settings.countTime",1);
+	} else {
+		$count++;
+		sg("yt_settings.countTime",$count);
+	}
+}');
+addClassMethod('ya_traffic', 'update', 'include_once(DIR_MODULES."app_yatraffic/app_yatraffic.class.php");
+$app_yatraffic=new app_yatraffic();
+$app_yatraffic->get_traffic(gg("yt_settings.reg_id"));');
+
 			$data_file='https://export.yandex.ru/bar/reginfo.xml';
 			$xml = simplexml_load_file($data_file);
 			sg('yt_settings.reg_id', $xml->region['id']);

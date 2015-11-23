@@ -2,29 +2,15 @@
 	<div class="panel-heading">Вызов модуля в меню</div>
 	<div class="panel-body">
 		<p><code><b>&#091#module name="app_yatraffic"#&#093</b></code> - вывод сведений о пробках<br>
+		<code><b>&#091#module name="app_yatraffic" routes="1"#&#093</b></code> - вывод сведений о пробках<br></p>
 	</div>
 </div>
 <div class="panel panel-info">
 	<div class="panel-heading">Вызов модуля в своих скриптах/методах</div>
 	<div class="panel-body">
 		<p>Для "ручного" обновления данных, в своих скриптах/методах можно использовать:<br>
-		<code style="display:block">include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
-		$yatraffic=new app_yatraffic();<br>
-		$yatraffic->get_traffic(gg('yt_settings.reg_id'));</code><br>
+		<code style="display:block">CallMethod('yt_settings.update');</code><br>
 		Для автоматического обновления нужно вставить в метод OnNewHour (или любой другой, выполняемый ежечасно) следующий код:<br>
-		<code style="display:block">
-		$updateTime = gg('yt_settings.updateTime');<br>
-		if($updateTime > 0){<br>
-		$count = gg('yt_settings.countTime');<br>
-		if($count >= $updateTime){<br>
-        include_once(DIR_MODULES.'app_yatraffic/app_yatraffic.class.php');<br>
-        $yatraffic=new app_yatraffic();<br>
-        $yatraffic->get_traffic(gg('yt_settings.city_id'));<br>
-        sg('yt_settings.countTime',1);<br>
-		} else {<br>
-        $count++;<br>
-        sg('yt_settings.countTime',$count);<br>
-		}<br>
-		}</code></p>
+		<code style="display:block">CallMethod('yt_settings.auto_update');</code></p>
 	</div>
 </div>

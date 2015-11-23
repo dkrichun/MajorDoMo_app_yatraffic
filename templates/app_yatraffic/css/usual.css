@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-.yt_all {
+.yt_traffic {
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 10px;
@@ -11,19 +11,32 @@
 	display: inline-block;
 	height: 105px;
 	width: 230px;
-	font: 15px Arial, Helvetica, sans-serif;
+	font: 14px Arial, Helvetica, sans-serif;
+}
+.yt_routes {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	display: inline-block;
+	height: auto;
+	width: 230px;
+	font: 14px Arial, Helvetica, sans-serif;
 }
 .info {
-	/*vertical-align: top;*/
 	float: left;
 	height: 84px;
 	width: 86px;
 }
 .yt_level {
-	font-size: 28px;
+	font-size: 32px;
 }
 .yt_title {
 	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 3px;
 }
 .yt_val {
 	font-size: 3;	

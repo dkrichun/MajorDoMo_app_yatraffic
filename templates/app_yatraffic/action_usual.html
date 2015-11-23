@@ -1,6 +1,7 @@
 <link href="../templates/app_yatraffic/css/usual.css" rel="stylesheet" type="text/css">
+[#if TRAFFIC#]
 	[#begin TRAFFIC#]
-		<div class="yt_all">
+		<div class="yt_traffic">
 			<div class="yt_title">[#city_title#]</div>
 			<img src="[#trafficIco#]" align="right">
 			<font color="[#icon#]">
@@ -9,3 +10,101 @@
 			</font>
 		</div>
 	[#end TRAFFIC#]
+[#endif TRAFFIC#]
+[#if ROUTES#]
+	[#begin ROUTES#]
+	<div class="yt_routes" style="height:[#height#]px">
+	<b><div class="yt_title">Маршруты</div></b>
+	 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+		<script type="text/javascript">
+			ymaps.ready(init);
+			function init () {
+				var myMap = new ymaps.Map("map", {
+					center:[56.8829, 60.5181],
+					zoom:11
+				});
+				var arr1= [#route1#];
+				var arr2= [#route2#];
+				var arr3= [#route3#];
+				var arr4= [#route4#];
+				if (arr1 != null ) {
+				ymaps.route( arr1 , {
+					mapStateAutoApply:false
+				}).then(function (route) {
+					  myMap.geoObjects.add(route);
+					  $('#list1').append(route.getHumanJamsTime());
+				}, function (error) {
+					alert('Возникла ошибка: ' + error.message);
+				});
+				}
+				if (arr2 != '' ) {
+				ymaps.route( arr2 , {
+					mapStateAutoApply:false
+				}).then(function (route) {
+					  myMap.geoObjects.add(route);
+					  $('#list2').append(route.getHumanJamsTime());
+				}, function (error) {
+					alert('Возникла ошибка: ' + error.message);
+				});
+				}
+				if (arr3) {
+				ymaps.route( arr3 , {
+					mapStateAutoApply:false
+				}).then(function (route) {
+					  myMap.geoObjects.add(route);
+					  $('#list3').append(route.getHumanJamsTime());
+				}, function (error) {
+					alert('Возникла ошибка: ' + error.message);
+				});
+				}
+				if (arr4) {
+				ymaps.route( arr4 , {
+					mapStateAutoApply:false
+				}).then(function (route) {
+					  myMap.geoObjects.add(route);
+					  $('#list4').append(route.getHumanJamsTime());
+				}, function (error) {
+					alert('Возникла ошибка: ' + error.message);
+				});
+				}
+			}
+		</script>
+		<div id="map" style="width: 0px; height: 0px"> </div> 
+		<table style = 'border: 0;'>
+		<tr>
+			<td>
+				<div style="width:160px;">[#route1_name#]</div>
+			</td>
+			<td>
+				<div id="list1">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route2_name#]</div>
+			</td>
+			<td>
+				<div id="list2">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route3_name#]</div>
+			</td>
+			<td>
+				<div id="list3">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route4_name#]</div>
+			</td>
+			<td>
+				<div id="list4">&nbsp;</div>
+		  </td>
+	   </tr>
+
+	</table>
+	</div>
+	[#end ROUTES#]
+[#endif ROUTES#]
