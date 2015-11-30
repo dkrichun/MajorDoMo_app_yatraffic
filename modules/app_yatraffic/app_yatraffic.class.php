@@ -218,7 +218,7 @@ function save_settings()
 	global $update_interval;
 	global $script;
 	
-	if(isset($reg_id)) sg('yt_settings.updScript',$reg_id);
+	if(isset($reg_id)) sg('yt_settings.reg_id',$reg_id);
 	if(isset($c_val)) sg('yt_settings.c_val',$c_val);
 	if(isset($script)) sg('yt_settings.updScript',$script);
 	sg('yt_settings.updateTime',$update_interval);
