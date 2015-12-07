@@ -19,54 +19,25 @@
 		<script type="text/javascript">
 			ymaps.ready(init);
 			function init () {
-				var myMap = new ymaps.Map("map", {
-					center:[56.8829, 60.5181],
-					zoom:11
-				});
-				var arr1= [#route1#];
-				var arr2= [#route2#];
-				var arr3= [#route3#];
-				var arr4= [#route4#];
-				if (arr1 != null ) {
-				ymaps.route( arr1 , {
-					mapStateAutoApply:false
-				}).then(function (route) {
-					  myMap.geoObjects.add(route);
-					  $('#list1').append(route.getHumanJamsTime());
-				}, function (error) {
-					alert('Возникла ошибка: ' + error.message);
-				});
-				}
-				if (arr2 != '' ) {
-				ymaps.route( arr2 , {
-					mapStateAutoApply:false
-				}).then(function (route) {
-					  myMap.geoObjects.add(route);
-					  $('#list2').append(route.getHumanJamsTime());
-				}, function (error) {
-					alert('Возникла ошибка: ' + error.message);
-				});
-				}
-				if (arr3) {
-				ymaps.route( arr3 , {
-					mapStateAutoApply:false
-				}).then(function (route) {
-					  myMap.geoObjects.add(route);
-					  $('#list3').append(route.getHumanJamsTime());
-				}, function (error) {
-					alert('Возникла ошибка: ' + error.message);
-				});
-				}
-				if (arr4) {
-				ymaps.route( arr4 , {
-					mapStateAutoApply:false
-				}).then(function (route) {
-					  myMap.geoObjects.add(route);
-					  $('#list4').append(route.getHumanJamsTime());
-				}, function (error) {
-					alert('Возникла ошибка: ' + error.message);
-				});
-				}
+				var myMap = new ymaps.Map("map", {center:[56.8829, 60.5181], zoom:11});
+				var route_arr=[];
+				var div_name=[];
+				route_arr[1]= [#route1#]
+				route_arr[2]= [#route2#]
+				route_arr[3]= [#route3#]
+				route_arr[4]= [#route4#]
+				for (var j=1;j<5;j++) {(function(i){
+					div_name[i]='#list'+i;
+					if (route_arr[i] != null ) {
+						ymaps.route( route_arr[i] , {
+						mapStateAutoApply:false
+						}).then(function (route) {
+							$(div_name[i]).append(route.getHumanJamsTime());
+						}, function (error) {
+							alert('Возникла ошибка: ' + error.message);
+						});
+					}
+				})(j)}	
 			}
 		</script>
 		<div id="map" style="width: 0px; height: 0px"> </div> 
