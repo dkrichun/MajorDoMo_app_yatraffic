@@ -26,7 +26,13 @@
 				route_arr[2]= [#route2#]
 				route_arr[3]= [#route3#]
 				route_arr[4]= [#route4#]
-				for (var j=1;j<5;j++) {(function(i){
+				route_arr[5]= [#route5#]
+				route_arr[6]= [#route6#]
+				route_arr[7]= [#route7#]
+				route_arr[8]= [#route8#]
+				route_arr[9]= [#route9#]
+				route_arr[10]= [#route10#]
+				for (var j=1;j<11;j++) {(function(i){
 					div_name[i]='#list'+i;
 					if (route_arr[i] != null ) {
 						ymaps.route( route_arr[i] , {
@@ -74,7 +80,54 @@
 				<div id="list4">&nbsp;</div>
 		  </td>
 	   </tr>
-
+		<tr>
+			<td>
+				<div>[#route5_name#]</div>
+			</td>
+			<td>
+				<div id="list5">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route6_name#]</div>
+			</td>
+			<td>
+				<div id="list6">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route7_name#]</div>
+			</td>
+			<td>
+				<div id="list7">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route8_name#]</div>
+			</td>
+			<td>
+				<div id="list8">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route9_name#]</div>
+			</td>
+			<td>
+				<div id="list9">&nbsp;</div>
+		  </td>
+	   </tr>
+		<tr>
+			<td>
+				<div>[#route10_name#]</div>
+			</td>
+			<td>
+				<div id="list10">&nbsp;</div>
+		  </td>
+	   </tr>
 	</table>
 	</div>
 	[#end ROUTES#]
