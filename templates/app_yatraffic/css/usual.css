@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 .yt_all {
 	border-style: solid;
 	border-width: 1px;

@@ -15,7 +15,7 @@
 	[#begin ROUTES#]
 	<div class="yt_all" style="height:[#height#]px">
 	<div class="yt_title">Маршруты</div>
-	 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+	 <script src="http://api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
 		<script type="text/javascript">
 			ymaps.ready(init);
 			function init () {
@@ -132,3 +132,99 @@
 	</div>
 	[#end ROUTES#]
 [#endif ROUTES#]
+[#if MULTI_ROUTES#]
+[#begin MULTI_ROUTES#]
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        html, body {
+            width: 300px; height: 600px; padding: 0; margin: 0;
+        }
+        #map {
+            width: 270px; height: [#map#]px;
+        }
+    </style>
+	<script src="/templates/app_yatraffic/custom_view.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	function init () {
+	var myMap = new ymaps.Map('map', {center: [55.750625, 37.626], zoom: 1}, {buttonMaxWidth: 300});
+	var route_arr=[];
+	var multiRouteModel=[];
+	var multiRoute=[];
+	var route_name=[];
+	var route_meth=[];
+				route_arr[1]= [#route1#]
+				route_arr[2]= [#route2#]
+				route_arr[3]= [#route3#]
+				route_arr[4]= [#route4#]
+				route_arr[5]= [#route5#]
+				route_arr[6]= [#route6#]
+				route_arr[7]= [#route7#]
+				route_arr[8]= [#route8#]
+				route_arr[9]= [#route9#]
+				route_arr[10]= [#route10#]
+				route_name[1]="[#route1_name#]"
+				route_name[2]="[#route2_name#]"
+				route_name[3]="[#route3_name#]"
+				route_name[4]="[#route4_name#]"
+				route_name[5]="[#route5_name#]"
+				route_name[6]="[#route6_name#]"
+				route_name[7]="[#route7_name#]"
+				route_name[8]="[#route8_name#]"
+				route_name[9]="[#route9_name#]"
+				route_name[10]="[#route10_name#]"
+				route_meth[1]='[#meth1#]'
+				route_meth[2]='[#meth2#]'
+				route_meth[3]='[#meth3#]'
+				route_meth[4]='[#meth4#]'
+				route_meth[5]='[#meth5#]'
+				route_meth[6]='[#meth6#]'
+				route_meth[7]='[#meth7#]'
+				route_meth[8]='[#meth8#]'
+				route_meth[9]='[#meth9#]'
+				route_meth[10]='[#meth10#]'
+				
+	for (var i=1;i<11;i++) {
+	if (route_arr[i] != null ) {	
+	multiRouteModel[i] = new ymaps.multiRouter.MultiRouteModel(route_arr[i], {
+        wayPointDraggable: true,
+        boundsAutoApply: true
+    });
+	}}
+	for (var i=1;i<11;i++) {
+	if (route_arr[i] != null ) {	
+	multiRouteModel[i].setParams({ routingMode: route_meth[i] }, true);
+	}}
+	ymaps.modules.require(['MultiRouteCustomView'], function (MultiRouteCustomView) {
+	for (var i=1;i<11;i++) {
+		if (route_arr[i] != null ) {
+			new MultiRouteCustomView(multiRouteModel[i], route_name[i]);
+		}}
+    });
+	for (var i=1;i<11;i++) {
+		if (route_arr[i] != null ) {
+			multiRoute[i] = new ymaps.multiRouter.MultiRoute(multiRouteModel[i], {
+			wayPointDraggable: true,
+			routeActiveStrokeColor: '#'+((1<<24)*Math.random()|0).toString(16),
+			boundsAutoApply: true
+		});
+	myMap.geoObjects.add(multiRoute[i]);
+	}}
+}
+
+ymaps.ready(init);
+</script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="viewContainer"></div>
+</body>
+
+</html>
+[#end MULTI_ROUTES#]
+[#endif MULTI_ROUTES#]

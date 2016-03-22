@@ -4,93 +4,153 @@
 
 <form action="?" method="get" class="form-horizontal" name="save_setting">
 <div class="form-group">
-	<label class="col-md-3">Маршрут 1</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 1</label>
+	<div class="col-md-3">
 	<input type="text" name="route1_name" class="form-control" placeholder="Имя маршрута" value="[#route1_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route1" class="form-control" placeholder="Массив координат" value="[#route1#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth1">
+		<option value="auto" [#if meth1=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth1=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select> 
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 2</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 2</label>
+	<div class="col-md-3">
 	<input type="text" name="route2_name" class="form-control" placeholder="Имя маршрута" value="[#route2_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route2" class="form-control" placeholder="Массив координат" value="[#route2#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth2">
+		<option value="auto" [#if meth2=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth2=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select> 
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 3</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 3</label>
+	<div class="col-md-3">
 	<input type="text" name="route3_name" class="form-control" placeholder="Имя маршрута" value="[#route3_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route3" class="form-control" placeholder="Массив координат" value="[#route3#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth3">
+		<option value="auto" [#if meth3=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth3=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 4</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 4</label>
+	<div class="col-md-3">
 	<input type="text" name="route4_name" class="form-control" placeholder="Имя маршрута" value="[#route4_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route4" class="form-control" placeholder="Массив координат" value="[#route4#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth4">
+		<option value="auto" [#if meth4=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth4=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select> 
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 5</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 5</label>
+	<div class="col-md-3">
 	<input type="text" name="route5_name" class="form-control" placeholder="Имя маршрута" value="[#route5_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route5" class="form-control" placeholder="Массив координат" value="[#route5#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth5">
+		<option value="auto" [#if meth5=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth5=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 6</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 6</label>
+	<div class="col-md-3">
 	<input type="text" name="route6_name" class="form-control" placeholder="Имя маршрута" value="[#route6_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route6" class="form-control" placeholder="Массив координат" value="[#route6#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth6">
+		<option value="auto" [#if meth6=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth6=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 7</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 7</label>
+	<div class="col-md-3">
 	<input type="text" name="route7_name" class="form-control" placeholder="Имя маршрута" value="[#route7_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route7" class="form-control" placeholder="Массив координат" value="[#route7#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth7">
+		<option value="auto" [#if meth7=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth7=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 8</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 8</label>
+	<div class="col-md-3">
 	<input type="text" name="route8_name" class="form-control" placeholder="Имя маршрута" value="[#route8_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route8" class="form-control" placeholder="Массив координат" value="[#route8#]">
 	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth8">
+		<option value="auto" [#if meth8=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth8=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
+	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 9</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 9</label>
+	<div class="col-md-3">
 	<input type="text" name="route9_name" class="form-control" placeholder="Имя маршрута" value="[#route9_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route9" class="form-control" placeholder="Массив координат" value="[#route9#]">
+	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth9">
+		<option value="auto" [#if meth9=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth9=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
 	</div>
 </div>
 <div class="form-group">
-	<label class="col-md-3">Маршрут 10</label>
-	<div class="col-md-4">
+	<label class="col-md-2">Маршрут 10</label>
+	<div class="col-md-3">
 	<input type="text" name="route10_name" class="form-control" placeholder="Имя маршрута" value="[#route10_name#]">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<input type="text" name="route10" class="form-control" placeholder="Массив координат" value="[#route10#]">
+	</div>
+	<div class="col-md-3">
+	<select class="form-control" name="meth10">
+		<option value="auto" [#if meth10=="auto"#] selected[#endif#]>На автомобиле</option>
+		<option value="masstransit" [#if meth10=="masstransit"#] selected[#endif#]>Общ. транспорт</option>
+	</select>
 	</div>
 </div>
 <div class="form-group">

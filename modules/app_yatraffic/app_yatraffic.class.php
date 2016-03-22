@@ -149,7 +149,21 @@ function usual(&$out) {
 
 function view_traffic(&$out) {
 $routes = $this->routes;
-if($routes!="1") {
+$map = $this->map;
+if($routes=="1") {
+		for ($i = 1; $i <= 11; $i++) {
+			$out["ROUTES"]["route".$i] = gg('yt_settings.route'.$i);
+			$out["ROUTES"]["route".$i."_name"] = gg('yt_settings.route'.$i.'_name');
+		}
+		$out["ROUTES"]["height"] = gg('yt_settings.height');
+		} elseif($routes=="2") {
+		for ($i = 1; $i <= 11; $i++) {
+			$out["MULTI_ROUTES"]["route".$i] = gg('yt_settings.route'.$i);
+			$out["MULTI_ROUTES"]["route".$i."_name"] = gg('yt_settings.route'.$i.'_name');
+			$out["MULTI_ROUTES"]["meth".$i] = gg('yt_settings.route'.$i.'_method');
+		}
+		if ($map == "on") {$out["MULTI_ROUTES"]["map"]= "200";} else {$out["MULTI_ROUTES"]["map"]= "0";}
+		} else {
 $url_ico='/templates/app_yatraffic/icons/';
 		if (!gg('yt_settings.c_val') == '') {
 		$out["TRAFFIC"]["city_title"] = gg('yt_settings.c_val');
@@ -164,12 +178,6 @@ $url_ico='/templates/app_yatraffic/icons/';
 		$out["TRAFFIC"]["val"] = gg('yt_info.val');
 		$out["TRAFFIC"]["tend"] = gg('yt_info.tend');
 		$out["TRAFFIC"]["trafficIco"] = $url_ico.gg('yt_info.icon').'.png';
-		} else {
-		for ($i = 1; $i <= 11; $i++) {
-			$out["ROUTES"]["route".$i] = gg('yt_settings.route'.$i);
-			$out["ROUTES"]["route".$i."_name"] = gg('yt_settings.route'.$i.'_name');
-		}
-		$out["ROUTES"]["height"] = gg('yt_settings.height');
 		}
 }
 
@@ -190,6 +198,7 @@ function get_routes(&$out)
 for ($i = 1; $i <= 11; $i++) {
 	$out['route'.$i] = gg('yt_settings.route'.$i);
 	$out['route'.$i.'_name'] = gg('yt_settings.route'.$i.'_name');
+	$out['meth'.$i] = gg('yt_settings.route'.$i.'_method');
 	}
 	$out["height"] = gg('yt_settings.height');
 }
@@ -220,45 +229,65 @@ function save_routes()
 {
 global $route1_name;
 global $route1;
+global $meth1;
 global $route2_name;
 global $route2;
+global $meth2;
 global $route3_name;
 global $route3;
+global $meth3;
 global $route4_name;
 global $route4;
+global $meth4;
 global $route5_name;
 global $route5;
+global $meth5;
 global $route6_name;
 global $route6;
+global $meth6;
 global $route7_name;
 global $route7;
+global $meth7;
 global $route8_name;
 global $route8;
+global $meth8;
 global $route9_name;
 global $route9;
+global $meth9;
 global $route10_name;
 global $route10;
+global $meth10;
 global $height;
 sg('yt_settings.route1_name',$route1_name);
 if($route1!='') sg('yt_settings.route1',$route1); else sg('yt_settings.route1', 'null');
+sg('yt_settings.route1_method',$meth1);
 sg('yt_settings.route2_name',$route2_name);
 if($route2!='') sg('yt_settings.route2',$route2); else sg('yt_settings.route2', 'null');
+sg('yt_settings.route2_method',$meth2);
 sg('yt_settings.route3_name',$route3_name); 
 if($route3!='') sg('yt_settings.route3',$route3); else sg('yt_settings.route3', 'null');
+sg('yt_settings.route3_method',$meth3);
 sg('yt_settings.route4_name',$route4_name);
 if($route4!='') sg('yt_settings.route4',$route4); else sg('yt_settings.route4', 'null');
+sg('yt_settings.route4_method',$meth4);
 sg('yt_settings.route5_name',$route5_name);
 if($route5!='') sg('yt_settings.route5',$route5); else sg('yt_settings.route5', 'null');
+sg('yt_settings.route5_method',$meth5);
 sg('yt_settings.route6_name',$route6_name);
 if($route6!='') sg('yt_settings.route6',$route6); else sg('yt_settings.route6', 'null');
+sg('yt_settings.route6_method',$meth6);
 sg('yt_settings.route7_name',$route7_name);
 if($route7!='') sg('yt_settings.route7',$route7); else sg('yt_settings.route7', 'null');
+sg('yt_settings.route7_method',$meth7);
 sg('yt_settings.route8_name',$route8_name);
 if($route8!='') sg('yt_settings.route8',$route8); else sg('yt_settings.route8', 'null');
+sg('yt_settings.route8_method',$meth8);
 sg('yt_settings.route9_name',$route9_name);
 if($route9!='') sg('yt_settings.route9',$route9); else sg('yt_settings.route9', 'null');
+sg('yt_settings.route9_method',$meth9);
 sg('yt_settings.route10_name',$route10_name);
 if($route10!='') sg('yt_settings.route10',$route10); else sg('yt_settings.route10', 'null');
+sg('yt_settings.route10_method',$meth10);
 sg('yt_settings.height',$height);
 }
 
