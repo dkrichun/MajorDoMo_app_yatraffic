@@ -162,7 +162,7 @@ if($routes=="1") {
 			$out["MULTI_ROUTES"]["route".$i."_name"] = gg('yt_settings.route'.$i.'_name');
 			$out["MULTI_ROUTES"]["meth".$i] = gg('yt_settings.route'.$i.'_method');
 		}
-		if ($map == "on") {$out["MULTI_ROUTES"]["map"]= "200";} else {$out["MULTI_ROUTES"]["map"]= "0";}
+		if ($map == "on") {$out["MULTI_ROUTES"]["map"]= gg('yt_settings.height');} else {$out["MULTI_ROUTES"]["map"]= "0";}
 		} else {
 $url_ico='/templates/app_yatraffic/icons/';
 		if (!gg('yt_settings.c_val') == '') {
