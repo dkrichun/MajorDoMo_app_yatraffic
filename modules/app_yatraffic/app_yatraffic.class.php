@@ -186,11 +186,11 @@ $data_file='https://export.yandex.ru/bar/reginfo.xml?region='.$reg_id; // адр
 $xml = simplexml_load_file($data_file); // раскладываем xml на массив
 //Выставляем переменные
 sg('yt_info.city_title', $xml->region->title);
-sg('yt_info.level', $xml->traffic->level);
-sg('yt_info.icon', $xml->traffic->icon);
-sg('yt_info.time', $xml->traffic->time);
-sg('yt_info.val', $xml->traffic->hint);
-sg('yt_info.tend', $xml->traffic->tend);
+sg('yt_info.level', $xml->traffic->region->level);
+sg('yt_info.icon', $xml->traffic->region->icon);
+sg('yt_info.time', $xml->traffic->region->time);
+sg('yt_info.val', $xml->traffic->region->hint);
+sg('yt_info.tend', $xml->traffic->region->tend);
 runScript(gg('yt_settings.updScript'));
 }
 function get_routes(&$out)
