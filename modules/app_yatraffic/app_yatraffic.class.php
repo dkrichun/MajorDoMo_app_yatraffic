@@ -302,7 +302,7 @@ $updateTime = gg('yt_settings.updateTime');
 if($updateTime > 0){
 	$count = gg('yt_settings.countTime');
 	if($count >= $updateTime){
-		$this->->get_traffic(gg('yt_settings.reg_id'));
+		$this->get_traffic(gg('yt_settings.reg_id'));
 		sg('yt_settings.countTime',1);
 	} else {
 		$count++;
