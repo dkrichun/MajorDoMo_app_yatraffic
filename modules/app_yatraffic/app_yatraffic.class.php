@@ -291,6 +291,26 @@ sg('yt_settings.route10_method',$meth10);
 sg('yt_settings.height',$height);
 }
 
+function processSubscription($event_name, $details='') {
+  if ($event_name=='HOURLY') {
+		$this->update();
+  }
+ }
+
+function update() {
+$updateTime = gg('yt_settings.updateTime');
+if($updateTime > 0){
+	$count = gg('yt_settings.countTime');
+	if($count >= $updateTime){
+		$this->->get_traffic(gg('yt_settings.reg_id'));
+		sg('yt_settings.countTime',1);
+	} else {
+		$count++;
+		sg('yt_settings.countTime',$count);
+	}
+  }
+}
+
 /**
 * Install
 *
@@ -299,6 +319,7 @@ sg('yt_settings.height',$height);
 * @access private
 */
  function install() {
+ subscribeToEvent($this->name, 'HOURLY');
  $className = 'ya_traffic';
  $objectName = array('yt_settings', 'yt_info');
  $objDescription = array('Настройки', 'Информация о пробках');
@@ -320,19 +341,6 @@ sg('yt_settings.height',$height);
 			$obj_rec['ID'] = SQLInsert('objects', $obj_rec);
 		}
 	}
-addClassMethod('ya_traffic', 'auto_update', '$updateTime = gg("yt_settings.updateTime");
-if($updateTime > 0){
-	$count = gg("yt_settings.countTime");
-	if($count >= $updateTime){
-		include_once(DIR_MODULES."app_yatraffic/app_yatraffic.class.php");
-		$app_yatraffic=new app_yatraffic();
-		$app_yatraffic->get_traffic(gg("yt_settings.reg_id"));
-		sg("yt_settings.countTime",1);
-	} else {
-		$count++;
-		sg("yt_settings.countTime",$count);
-	}
-}');
 addClassMethod('ya_traffic', 'update', 'include_once(DIR_MODULES."app_yatraffic/app_yatraffic.class.php");
 $app_yatraffic=new app_yatraffic();
 $app_yatraffic->get_traffic(gg("yt_settings.reg_id"));');
