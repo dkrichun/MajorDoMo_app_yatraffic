@@ -84,7 +84,7 @@ ymaps.modules.define('MultiRouteCustomView', [
         // Метод формирующий общую часть описания для обоих типов маршрутов.
         createCommonRouteOutput: function (route) {
             return "<i class=\"fa fa-flag \"></i> " + route.properties.get("distance").text + "&nbsp;&nbsp;&nbsp;" +
-                "<i class=\"fa fa-clock-o\"></i>  " + route.properties.get("duration").text;
+                "<i class=\"fa fa-clock-o\"></i>  " + route.properties.get("durationInTraffic").text;
         },
 
         // Метод строящий список текстовых описаний для
